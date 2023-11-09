@@ -14,9 +14,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Player
+  - Box_SemiRigid
+  - Box_Rigid
   - 
   - 
   - 
