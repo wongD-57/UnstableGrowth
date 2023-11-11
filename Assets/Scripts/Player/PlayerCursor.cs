@@ -11,9 +11,13 @@ public class PlayerCursor : MonoBehaviour
 
     //RectTransform m_rTransform;
 
-    GameObject cameraObject;
+    private GameObject cameraObject;
 
     Vector3 cameraPosition;
+
+    private GameObject hitObject;
+
+    public float cubeScaleSpeed = 0.1f;
 
 
 
@@ -27,13 +31,26 @@ public class PlayerCursor : MonoBehaviour
         if (Physics.Raycast(cameraPosition, transform.position - cameraPosition, out hit, 30f)) {
             Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* hit.distance, Color.green);
             Debug.Log("Grow!");
+            if (hit.rigidbody.gameObject.GetComponent<BoxScale>() != null) {
+                hit.rigidbody.gameObject.GetComponent<BoxScale>().MakeGrow();
+            }
         } else {
             Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* 100, Color.red);
         }
     }
 
     public void MakeShrink() {
-
+        RaycastHit hit;
+        cameraPosition = cameraObject.transform.position;
+        if (Physics.Raycast(cameraPosition, transform.position - cameraPosition, out hit, 30f)) {
+            Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* hit.distance, Color.green);
+            Debug.Log("Shrink!");
+            if (hit.rigidbody.gameObject.GetComponent<BoxScale>() != null) {
+                hit.rigidbody.gameObject.GetComponent<BoxScale>().MakeShrink();
+            }
+        } else {
+            Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* 100, Color.red);
+        }
     }
 
     void Start() {

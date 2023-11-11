@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 
     float inputMove;
     Rigidbody rb;
-    int grounded = 1;
+    public int grounded = 0;
 
     [SerializeField] private float moveSpeed = 1;
     [SerializeField] private float jumpForce = 5;
@@ -31,6 +31,10 @@ public class PlayerMovement : MonoBehaviour
         // Ignore all hitboxes other than on see saw or boundaries of game
         print("Drop");
     }
+
+    public void Grounded() {
+        grounded = 1;
+    }
     
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -40,7 +44,5 @@ public class PlayerMovement : MonoBehaviour
         // During every fixed update, translate the player left or right according to the input.
         rb.AddForce(new Vector3(inputMove * moveSpeed, 0, 0), ForceMode.Impulse);
     }
-    
-
     
 }

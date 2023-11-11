@@ -24,9 +24,7 @@ public class PlayerInputHandler : MonoBehaviour
         playerInput = GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
-        playerInputActions.Player.Jump.performed += OnJump;   
-        playerInputActions.Player.Grow.performed += OnGrow;
-        playerInputActions.Player.Shrink.performed += OnShrink;     
+        playerInputActions.Player.Jump.performed += OnJump;    
     }
 
     private void Update() {
@@ -36,7 +34,15 @@ public class PlayerInputHandler : MonoBehaviour
         inputCursor = playerInputActions.Player.Cursor.ReadValue<Vector2>();
         playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
         
-        if (playerInputActions.Player.Drop.WasPerformedThisFrame() == true) {
+        if (playerInputActions.Player.Grow.IsPressed()) {
+            OnGrow();
+        }
+
+        if (playerInputActions.Player.Shrink.IsPressed()) {
+            OnShrink();
+        }
+        
+        if (playerInputActions.Player.Drop.IsPressed()) {
             OnDrop();
         }
     }
@@ -49,11 +55,11 @@ public class PlayerInputHandler : MonoBehaviour
         GetComponent<PlayerMovement>().Drop();
     }
     
-    public void OnGrow(InputAction.CallbackContext context) {
+    public void OnGrow() {
         playerCursorObject.GetComponent<PlayerCursor>().MakeGrow();
     }
 
-    public void OnShrink(InputAction.CallbackContext context) {
+    public void OnShrink() {
         playerCursorObject.GetComponent<PlayerCursor>().MakeShrink();
     }
 }
