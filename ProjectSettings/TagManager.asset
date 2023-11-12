@@ -13,12 +13,12 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - Player
-  - Box_SemiRigid
+  - Player_OverallHitbox
+  - Player_GroundHitbox
+  - Box_OverallHitbox
+  - Box_EdgeHitbox
+  - Environment
   - Box_Rigid
-  - PlayerGroundHitbox
-  - 
   - 
   - 
   - 

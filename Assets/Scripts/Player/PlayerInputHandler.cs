@@ -17,7 +17,6 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Start() {
         playerCursorObject = GameObject.Find("Cursor");
-        Debug.Log(playerCursorObject);
     }
 
     private void Awake() {
@@ -42,17 +41,16 @@ public class PlayerInputHandler : MonoBehaviour
             OnShrink();
         }
         
-        if (playerInputActions.Player.Drop.IsPressed()) {
-            OnDrop();
-        }
+        OnDrop(playerInputActions.Player.Drop.IsPressed());
+        
     }
 
     public void OnJump(InputAction.CallbackContext context) {
         GetComponent<PlayerMovement>().Jump();
     }
 
-    public void OnDrop() {
-        GetComponent<PlayerMovement>().Drop();
+    public void OnDrop(bool dropInput) {
+        GetComponent<PlayerCollisions>().Drop(dropInput);
     }
     
     public void OnGrow() {
