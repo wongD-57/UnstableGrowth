@@ -62,6 +62,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Grow"",
+                    ""type"": ""Button"",
+                    ""id"": ""5799a0f3-532a-4298-9784-8af306e86ea9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Shrink"",
+                    ""type"": ""Button"",
+                    ""id"": ""cabb2b69-b88e-4579-bbf1-a092894ca3fc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -174,6 +192,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""46dbdd50-2759-4b5b-94f8-56fbcc481f83"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Grow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7d263ac-0678-41ae-b948-f998c69c505d"",
+                    ""path"": ""<Keyboard>/u"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Shrink"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -198,6 +238,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         m_Player_Cursor = m_Player.FindAction("Cursor", throwIfNotFound: true);
+        m_Player_Grow = m_Player.FindAction("Grow", throwIfNotFound: true);
+        m_Player_Shrink = m_Player.FindAction("Shrink", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -263,6 +305,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Drop;
     private readonly InputAction m_Player_Cursor;
+    private readonly InputAction m_Player_Grow;
+    private readonly InputAction m_Player_Shrink;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -271,6 +315,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Drop => m_Wrapper.m_Player_Drop;
         public InputAction @Cursor => m_Wrapper.m_Player_Cursor;
+        public InputAction @Grow => m_Wrapper.m_Player_Grow;
+        public InputAction @Shrink => m_Wrapper.m_Player_Shrink;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -292,6 +338,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Cursor.started += instance.OnCursor;
             @Cursor.performed += instance.OnCursor;
             @Cursor.canceled += instance.OnCursor;
+            @Grow.started += instance.OnGrow;
+            @Grow.performed += instance.OnGrow;
+            @Grow.canceled += instance.OnGrow;
+            @Shrink.started += instance.OnShrink;
+            @Shrink.performed += instance.OnShrink;
+            @Shrink.canceled += instance.OnShrink;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -308,6 +360,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Cursor.started -= instance.OnCursor;
             @Cursor.performed -= instance.OnCursor;
             @Cursor.canceled -= instance.OnCursor;
+            @Grow.started -= instance.OnGrow;
+            @Grow.performed -= instance.OnGrow;
+            @Grow.canceled -= instance.OnGrow;
+            @Shrink.started -= instance.OnShrink;
+            @Shrink.performed -= instance.OnShrink;
+            @Shrink.canceled -= instance.OnShrink;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -340,5 +398,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);
         void OnCursor(InputAction.CallbackContext context);
+        void OnGrow(InputAction.CallbackContext context);
+        void OnShrink(InputAction.CallbackContext context);
     }
 }
