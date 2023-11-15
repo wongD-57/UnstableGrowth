@@ -16,23 +16,31 @@ public class PlayerInputHandler : MonoBehaviour
 
 
     /**
-    If you initialise components once instead of calling "GetComponent" repeatedly 
-    it should speed up computation and coding. I have made an example with "PlayerMovement".
+    If you initialise components to a variable once instead of calling "GetComponent" repeatedly 
+    it should speed up computation and writing code. I have made an example with "PlayerMovement" 
+    and "Player Collisions".
 
     I have left your original lines commented out in case you would like to revert them.
-    Please let me know if you would like me to stop meddeling in your code.
+    This is a minor optimisation but let me know if you would like me to stop meddeling in your code.
     */
+
     public PlayerMovement PMComponent;
+    public PlayerCollisions PCComponent;
 
     void Start() {
         playerCursorObject = GameObject.Find("Cursor");
 
-        if(TryGetComponent<PlayerMovement>(out PMComponent))
+        // The following two if statements are new additions.
+        if(!TryGetComponent<PlayerMovement>(out PMComponent))
         {
-            //  PlayerMovement component assigned to the PMComponent variable.
-        } else {
             Debug.Log("PlayerCursor component not found.");
-        }
+        } 
+
+        if(!TryGetComponent<PlayerCollisions>(out PCComponent))
+        {
+            Debug.Log("PlayerCollisions component not found.");
+        } 
+        
     }
 
     private void Awake() {
@@ -68,7 +76,8 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     public void OnDrop(bool dropInput) {
-        GetComponent<PlayerCollisions>().Drop(dropInput);
+        // GetComponent<PlayerCollisions>().Drop(dropInput);
+        PCComponent.Drop(dropInput);
     }
     
     public void OnGrow() {
