@@ -18,7 +18,7 @@ public class PlayerGroundCheck : MonoBehaviour
         groundMask = (1 << 10) | (1 << 11) | (1 << 12);
     }
 
-    void Update() {
+    void FixedUpdate() {
         if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundMask)) {
             transform.parent.transform.GetComponent<PlayerMovement>().Grounded(true);
         } else {
