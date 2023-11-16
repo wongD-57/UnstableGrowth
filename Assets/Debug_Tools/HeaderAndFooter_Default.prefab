@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a038f527e43b3a644bbb245cbfcf1afb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32f9bc6993ece3a47b2dedf88420ccb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
   travelSpace: 1000
   scrollSpeed: 2000
   isMoving: 0
-  MovingCanvas: {fileID: 3439952953535689622}
+  MovingCanvas: {fileID: 6910845432395273265}
 --- !u!1 &2911199132114515518
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a038f527e43b3a644bbb245cbfcf1afb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 32f9bc6993ece3a47b2dedf88420ccb8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -514,4 +514,4 @@ MonoBehaviour:
   travelSpace: 650
   scrollSpeed: 2500
   isMoving: 0
-  MovingCanvas: {fileID: 1175563470933010415}
+  MovingCanvas: {fileID: 4244977235336604707}

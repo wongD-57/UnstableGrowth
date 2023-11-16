@@ -38,8 +38,6 @@ public class headerFooterScrollScript : MonoBehaviour
         }
     }
 
-
-
     void Update()
     {
         if(distCounter>travelSpace)

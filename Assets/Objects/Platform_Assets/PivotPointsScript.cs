@@ -22,19 +22,19 @@ public class PivotPointsScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // float distanceholder = transform.position.x;
-
-        leftPivot.transform.position = new Vector3(transform.position.x-PivotPointStartingWidth,transform.position.y + PivotPointStartingHeight,transform.position.z);
-        rightPivot.transform.position = new Vector3(transform.position.x+PivotPointStartingWidth,transform.position.y + PivotPointStartingHeight,transform.position.z);
+        leftPivot.transform.position = new Vector3(
+            transform.position.x-PivotPointStartingWidth,
+            transform.position.y + PivotPointStartingHeight,
+            transform.position.z);
+        rightPivot.transform.position = new Vector3(
+            transform.position.x+PivotPointStartingWidth,
+            transform.position.y + PivotPointStartingHeight,
+            transform.position.z);
     }
 
-    // Update is called once per frame
     void Update()
     {
-
         float distanceBetweenPivots = Mathf.Abs(leftPivot.transform.position.x - rightPivot.transform.position.x);
-
-
 
         if(distanceBetweenPivots < MaxPointWidth && distanceBetweenPivots > MinPointWidth)
         {

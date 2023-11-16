@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class PlayerFallScript : MonoBehaviour
 {
-
-     
-
     void OnTriggerEnter(Collider other)
     {
-        print(other.name);
-
         if(other.tag == "Player")
         {        
-            print("ROUND OVER");
+            GameObject GOHolder = other.gameObject;
+
+            MainManager.Instance.playerHasFallen(GOHolder);
+            // MainManager.Instance.LoadSceneByName("TestSceneA");
+
             GameObject closeBanner = GameObject.Find("ExitFooter");
-            if(closeBanner.TryGetComponent<headerFooterScrollScript>(out headerFooterScrollScript HFSS))
+            if(closeBanner.TryGetComponent<headerFooterScrollScript>(
+                out headerFooterScrollScript HFSS))
             {
-                print("FOUND");
                 HFSS.isMoving = true;
-            } else
-            {
-                print("Not found");
             }
         }
     }
