@@ -17,7 +17,7 @@ public class BoxEdgeHitbox : MonoBehaviour
     }
 
     void Update() {
-        angleTolerance = transform.parent.transform.GetComponent<BoxOverallHitbox>().edgeHitboxTolerance;
+        angleTolerance = transform.parent.parent.transform.GetComponent<BoxOverallHitbox>().edgeHitboxTolerance;
 
         yTolerance = Mathf.Sin(angleTolerance * Mathf.Deg2Rad);
     }

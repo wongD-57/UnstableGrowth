@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 125314554336262327}
   - component: {fileID: 4643772150408099546}
   - component: {fileID: 3071279297866323547}
+  - component: {fileID: 4217477706530456611}
   m_Layer: 12
   m_Name: RigidBox
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,8 +107,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 10}
+  m_Center: {x: 0, y: 0, z: -4.5}
 --- !u!54 &125314554336262327
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -164,3 +165,15 @@ MonoBehaviour:
   shrinkRate: 0.05
   maxSize: 1.5
   minSize: 0.75
+--- !u!114 &4217477706530456611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145952700621527429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2069c47eb19bc8f4dbf2666cedc9b997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
