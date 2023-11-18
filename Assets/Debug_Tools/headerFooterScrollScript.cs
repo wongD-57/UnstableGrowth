@@ -27,7 +27,8 @@ public class headerFooterScrollScript : MonoBehaviour
     {
         initialHeight = MovingCanvas.localPosition[2];
 
-        switch(objectType){
+        switch(objectType)
+        {
             case headerFooterType.Header:
                 isMoving = true;
                 break;
