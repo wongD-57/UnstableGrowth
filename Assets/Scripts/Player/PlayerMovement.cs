@@ -31,15 +31,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Jump() {
-        // If grounded, add force to jump up.
         if (grounded) {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             grounded = false;
             
         }
-        
-        // Else if not grounded, don't do anything.
-        
     }
 
     public void Grounded(bool groundValue) {

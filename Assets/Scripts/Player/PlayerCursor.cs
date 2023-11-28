@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerCursor : MonoBehaviour
 {
-    
+
+    public float cursorSpeed = 0.1f;
+    public float xInputValue, yInputValue;
+    private float platformZDatum;
+
+
     Vector2 input = Vector2.zero;
 
     public float cursorSpeedProportional = 0.1f; // Proportional Speed of Cursor relative to screen size
 
     //RectTransform m_rTransform;
-
     private GameObject cameraObject;
 
     Vector3 cameraPosition;
@@ -19,7 +23,56 @@ public class PlayerCursor : MonoBehaviour
 
     public float cubeScaleSpeed = 0.1f;
 
+    private List<GameObject> selectedObject = new List<GameObject>();
 
+    void Start()
+    {
+        //m_rTransform = GetComponent<RectTransform>();
+
+        GameObject GOHolder = GameObject.Find("PlatformParent");
+        platformZDatum = GOHolder.transform.position.z;
+        transform.position = new Vector3(transform.position.x,transform.position.y,platformZDatum-2);
+
+        // transform.position += new Vector3((xInputValue, yInputValue, 0))*cursorSpeed;
+        cameraObject = GameObject.Find("Main Camera");
+
+        xInputValue = 0;
+        yInputValue = 0;
+    }
+
+    void Update() {
+        //m_rTransform.anchoredPosition += new Vector2(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional);
+        // transform.position += new Vector3(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional, 0);
+
+        movementManager();
+
+        changeScale();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        print("YEAH!");
+        print(other);
+        selectedObject.Add(other.gameObject);
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        print("YEAH!");
+        print(other);
+        GameObject GOHolder = other.gameObject;
+        if(selectedObject.Contains(GOHolder))
+        {
+            print("Removed Object");
+            selectedObject.Remove(other.gameObject);
+        }
+    }
+
+
+    void changeScale()
+    {
+        // OverlapCollider
+    }
 
     public void ReadInput(Vector2 inputCursor) {
         input = inputCursor;
@@ -53,15 +106,8 @@ public class PlayerCursor : MonoBehaviour
         }
     }
 
-    void Start() {
-        //m_rTransform = GetComponent<RectTransform>();
 
-        cameraObject = GameObject.Find("Main Camera");
-
-    }
-
-    void Update() {
-        //m_rTransform.anchoredPosition += new Vector2(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional);
-        transform.position += new Vector3(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional, 0);
+    public void movementManager(){
+        transform.position += new Vector3(xInputValue, yInputValue, 0)*cursorSpeed*Time.deltaTime;
     }
 }

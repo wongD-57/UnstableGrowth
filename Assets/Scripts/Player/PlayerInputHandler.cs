@@ -18,14 +18,12 @@ public class PlayerInputHandler : MonoBehaviour
     public PlayerMovement PMComponent;
     public PlayerCollisions PCComponent;
 
+    public PlayerCursor PLCScript;
+
     void Start() {
 
-        // if()
-        // playerCursorObject = .Find("Cursor");
-
-        // print(gameObject.tag);
         characterColor = gameObject.tag;
-        // The following two if statements are new additions.
+        
         if(!TryGetComponent<PlayerMovement>(out PMComponent))
         {
             Debug.Log("PlayerCursor component not found.");
@@ -39,7 +37,7 @@ public class PlayerInputHandler : MonoBehaviour
     }
 
     private void Awake() {
-        playerInput = GetComponent<PlayerInput>();
+        // playerInput = GetComponent<PlayerInput>();
         playerInputActions = new PlayerInputActions();
         playerInputActions.Player.Enable();
         playerInputActions.Player.Jump.performed += OnJump;    
@@ -50,14 +48,13 @@ public class PlayerInputHandler : MonoBehaviour
 
         if(characterColor == "Orange")
         {
-
             orangeMovementManager();
+            orangeCursorManager();
 
-        }else if(characterColor == "Blue") {
-
-            //
-            // PMComponent.ReadInput(inputMove);
-        
+        }else if(characterColor == "Blue") 
+        {
+            blueMovementManager();
+            blueCursorManager();
         }
 
 
@@ -71,19 +68,14 @@ public class PlayerInputHandler : MonoBehaviour
         if (playerInputActions.Player.Shrink.IsPressed()) {
             OnShrink();
         }
-        
-        OnDrop(playerInputActions.Player.Drop.IsPressed());
-        
     }
 
     public void OnJump(InputAction.CallbackContext context) {
-        // GetComponent<PlayerMovement>().Jump();
         PMComponent.Jump();
     }
 
     public void OnDrop(bool dropInput) {
-        // GetComponent<PlayerCollisions>().Drop(dropInput);
-        PCComponent.Drop(dropInput);
+        print("OnDrop Fired");
     }
     
     public void OnGrow() {
@@ -98,7 +90,6 @@ public class PlayerInputHandler : MonoBehaviour
     {
         if(Input.GetKey("a"))
         {
-            print("A!");
             PMComponent.ReadInput(-1);
         } else if(Input.GetKey("d"))
         {
@@ -111,5 +102,93 @@ public class PlayerInputHandler : MonoBehaviour
         {
             PMComponent.Jump();
         }
+
+        if(Input.GetKey("s"))
+        {
+            PCComponent.dropPressed = true;
+        } else {
+            PCComponent.dropPressed = false;
+        }
+    }
+
+    public void orangeCursorManager()
+    {
+
+        PLCScript.xInputValue = 0;
+        PLCScript.yInputValue = 0;
+        if(Input.GetKey("h"))
+        {
+            PLCScript.xInputValue+=1;
+        }
+        
+        if(Input.GetKey("f"))
+        {
+            PLCScript.xInputValue-=1;
+        }
+
+        if(Input.GetKey("t"))
+        {
+            PLCScript.yInputValue+=1;
+        }
+
+        if(Input.GetKey("g"))
+        {
+            PLCScript.yInputValue-=1;
+        }
+
+        // print("x:"+PLCScript.xInputValue+" y:"+PLCScript.yInputValue);
+    }
+
+    public void blueMovementManager()
+    {
+        if(Input.GetKey("j"))
+        {
+            PMComponent.ReadInput(-1);
+        } else if(Input.GetKey("l"))
+        {
+            PMComponent.ReadInput(1);
+        } else {
+            PMComponent.ReadInput(0);
+        }
+
+        if(Input.GetKeyDown("i"))
+        {
+            PMComponent.Jump();
+        }
+
+        if(Input.GetKey("k"))
+        {
+            PCComponent.dropPressed = true;
+        } else {
+            PCComponent.dropPressed = false;
+        }
+    }
+
+    public void blueCursorManager()
+    {
+
+        PLCScript.xInputValue = 0;
+        PLCScript.yInputValue = 0;
+        if(Input.GetKey(KeyCode.RightArrow))
+        {
+            PLCScript.xInputValue+=1;
+        }
+        
+        if(Input.GetKey(KeyCode.LeftArrow))
+        {
+            PLCScript.xInputValue-=1;
+        }
+
+        if(Input.GetKey(KeyCode.UpArrow))
+        {
+            PLCScript.yInputValue+=1;
+        }
+
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+            PLCScript.yInputValue-=1;
+        }
+
+        // print("x:"+PLCScript.xInputValue+" y:"+PLCScript.yInputValue);
     }
 }

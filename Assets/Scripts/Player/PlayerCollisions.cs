@@ -7,12 +7,12 @@ public class PlayerCollisions : MonoBehaviour
     Rigidbody rb;
     Collider groundCollider;
 
-    bool dropPressed = false;
+    public bool dropPressed = false;
 
 
-    public void Drop(bool dropInput) {
-        dropPressed = dropInput;
-    }
+    // public void Drop(bool dropInput) {
+    //     dropPressed = dropInput;
+    // }
     
     void Start() {
         rb = GetComponent<Rigidbody>();
@@ -21,6 +21,7 @@ public class PlayerCollisions : MonoBehaviour
     }
 
     void FixedUpdate() {
+        // print("dropPressed="+dropPressed);
         if (rb.velocity.y > 0 || dropPressed) {
             groundCollider.enabled = false;
         } else {
