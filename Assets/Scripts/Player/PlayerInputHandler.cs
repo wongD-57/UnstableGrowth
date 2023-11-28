@@ -8,6 +8,8 @@ public class PlayerInputHandler : MonoBehaviour
 {
 
     float inputMove = 0f;
+
+    private string characterColor;
     Vector2 inputCursor = Vector2.zero;
     private PlayerInput playerInput;
     private PlayerInputActions playerInputActions;
@@ -17,8 +19,12 @@ public class PlayerInputHandler : MonoBehaviour
     public PlayerCollisions PCComponent;
 
     void Start() {
-        playerCursorObject = transform.Find("Cursor");
 
+        // if()
+        // playerCursorObject = .Find("Cursor");
+
+        // print(gameObject.tag);
+        characterColor = gameObject.tag;
         // The following two if statements are new additions.
         if(!TryGetComponent<PlayerMovement>(out PMComponent))
         {
@@ -41,11 +47,22 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Update() {
         inputMove = playerInputActions.Player.LeftRightMovement.ReadValue<float>();
-        // GetComponent<PlayerMovement>().ReadInput(inputMove);
-        PMComponent.ReadInput(inputMove);
+
+        if(characterColor == "Orange")
+        {
+
+            orangeMovementManager();
+
+        }else if(characterColor == "Blue") {
+
+            //
+            // PMComponent.ReadInput(inputMove);
+        
+        }
+
+
 
         inputCursor = playerInputActions.Player.Cursor.ReadValue<Vector2>();
-        playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
         
         if (playerInputActions.Player.Grow.IsPressed()) {
             OnGrow();
@@ -75,5 +92,24 @@ public class PlayerInputHandler : MonoBehaviour
 
     public void OnShrink() {
         playerCursorObject.GetComponent<PlayerCursor>().MakeShrink();
+    }
+
+    public void orangeMovementManager()
+    {
+        if(Input.GetKey("a"))
+        {
+            print("A!");
+            PMComponent.ReadInput(-1);
+        } else if(Input.GetKey("d"))
+        {
+            PMComponent.ReadInput(1);
+        } else {
+            PMComponent.ReadInput(0);
+        }
+
+        if(Input.GetKeyDown("w"))
+        {
+            PMComponent.Jump();
+        }
     }
 }

@@ -24,12 +24,12 @@ public class spriteXFlipper : MonoBehaviour
         // print(lastFrameUpdate +" - "+transform.position.x+" = "+ i);
         if (i < -distbuffer)
         {
-            print("Case A");
+            // print("Case A");
             lastFrameUpdate = transform.position.x;
             faceRight();
         }else if (i> distbuffer)
         {
-            print("Case B");
+            // print("Case B");
             lastFrameUpdate = transform.position.x;
             faceLeft();
 

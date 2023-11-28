@@ -48,7 +48,6 @@ public class PlayerMovement : MonoBehaviour
     
 
     void FixedUpdate() {
-        // During every fixed update, translate the player left or right according to the input.
         rb.AddForce(new Vector3(inputMove * moveSpeed, 0, 0), ForceMode.Impulse);
         zAxisMover();
     }
