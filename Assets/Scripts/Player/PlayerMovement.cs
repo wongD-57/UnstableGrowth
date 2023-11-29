@@ -9,8 +9,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private bool grounded = false;
 
-    [SerializeField] private float moveSpeed = 1;
-    [SerializeField] private float jumpForce = 5;
+    public float moveSpeed = 1;
+    public float jumpForce = 5;
     
     public float playerDepth = 0.1f;
 

@@ -6,7 +6,7 @@ public class armDirectionScript : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    public GameObject CursorObject;
+    private GameObject cursorObject;
 
     private float angleDifference;
 
@@ -14,6 +14,11 @@ public class armDirectionScript : MonoBehaviour
     bool movingRightChecker = true;
 
     public int flipper = 1;
+
+    void Start() {
+        cursorObject = transform.parent.parent.parent.GetChild(0).gameObject;
+    }
+
 
     // Update is called once per frame
     void Update()
@@ -24,7 +29,7 @@ public class armDirectionScript : MonoBehaviour
             // changeDirection(movingRight);
         }
 
-        Vector3 relativePos = transform.position - CursorObject.transform.position;
+        Vector3 relativePos = transform.position - cursorObject.transform.position;
 
         Vector3 desiredUp = new Vector3(relativePos.y, -relativePos.x, 0);
 

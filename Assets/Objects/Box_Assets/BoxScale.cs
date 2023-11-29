@@ -16,9 +16,11 @@ public class BoxScale : MonoBehaviour
     private Vector3 startingScale;
     private Vector3 targetSize;
 
+    public float density = 0.7f;
+
     public void MakeGrow() {
         currentScale = Mathf.Clamp(currentScale + growthRate, minSize, maxSize);
-
+        
         transform.localScale = UpdateScaleRate(currentScale);
     }
 
@@ -30,10 +32,16 @@ public class BoxScale : MonoBehaviour
 
     void Start() {
         startingScale = transform.localScale;
+
+        UpdateMass(startingScale[0], startingScale[1]);
     }
 
     Vector3 UpdateScaleRate(float targetScale) {
         targetSize = targetScale * startingScale;
         return targetSize;
+    }
+
+    void UpdateMass(float xSize, float ySize) {
+        GetComponent<Rigidbody>().mass = density * xSize * ySize;
     }
 }
