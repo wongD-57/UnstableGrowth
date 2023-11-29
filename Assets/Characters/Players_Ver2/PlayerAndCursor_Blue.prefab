@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 3533947371214092078}
   m_Layer: 7
   m_Name: Legs
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 281430800034219272}
   m_Layer: 0
   m_Name: PlayerAndCursor_Blue
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 7706960071543511493}
   m_Layer: 7
   m_Name: Arm
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 5504329186734197678}
   m_Layer: 7
   m_Name: Sprites Parent
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,7 +306,7 @@ Transform:
   m_GameObject: {fileID: 4709554818705538783}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.052, y: 0.149, z: 1}
+  m_LocalPosition: {x: -0.052, y: 0.149, z: -1}
   m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 6461249625015575491}
   m_Layer: 7
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -546,7 +546,7 @@ GameObject:
   - component: {fileID: 2365471490202724214}
   m_Layer: 0
   m_Name: Cursor
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 2036801204739908250}
   m_Layer: 7
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -701,9 +701,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.27
       objectReference: {fileID: 0}
+    - target: {fileID: 1841233622519307714, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
+      propertyPath: m_TagString
+      value: Blue
+      objectReference: {fileID: 0}
     - target: {fileID: 1890894236205495087, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890894236205495087, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
+      propertyPath: m_TagString
+      value: Blue
       objectReference: {fileID: 0}
     - target: {fileID: 4988476176215623113, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_LocalScale.x

@@ -24,6 +24,9 @@ public class FallingBoxesScript : MonoBehaviour
 
     private int objectsSpawnedCounter = 0;
 
+    public List<Material> BoxColorList = new List<Material>();
+
+
     void Start(){
 
         timeOfLastInstantiation = Time.time;
@@ -63,7 +66,7 @@ public class FallingBoxesScript : MonoBehaviour
         switch(objectsSpawnedCounter){
 
         case 150: // Spawn special object to flavour the scene.
-            print("Platform Spawned");
+            // print("Platform Spawned");
 
             cloneHolder = Instantiate(platformObject,transform);
 
@@ -79,6 +82,11 @@ public class FallingBoxesScript : MonoBehaviour
             cloneHolder = Instantiate(FallingObjects[i],transform);
             Vector3 offsetVectorHolder = new Vector3(Random.Range(-cylinderRadius,cylinderRadius),0,Random.Range(-cylinderRadius,cylinderRadius));
             cloneHolder.transform.position += offsetVectorHolder;
+
+            if(cloneHolder.TryGetComponent<MeshRenderer>(out MeshRenderer MRHolder))
+            {
+                MRHolder.material = BoxColorList[Random.Range(0,BoxColorList.Count)];
+            }
             break;
         }
 

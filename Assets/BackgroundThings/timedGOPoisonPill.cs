@@ -19,7 +19,7 @@ public class timedGOPoisonPill : MonoBehaviour
     {
         if (Time.time - timeOfCreation > durationOfLife)
         {
-            print("Destrony Self");
+            // print("Destrony Self");
             Destroy(gameObject);
         }
     }

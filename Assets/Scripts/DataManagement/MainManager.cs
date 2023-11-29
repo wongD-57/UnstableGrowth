@@ -10,9 +10,18 @@ public class MainManager : MonoBehaviour
 
     public int numberOfPlayers;
 
+    int numberOfLevelsPlayed = 0;
+
+    public int bluePoints;
+    public int orangePoints;
+
+    public int numberOfLevels  = 5;
+
     private float sceneDelayTime = 0.25f;
     private float currentTime;
     private float timeOfFall;
+
+    private List<int> levelsChosen = new List<int>();
 
     private bool sceneExitInProgress;
 
@@ -39,7 +48,6 @@ public class MainManager : MonoBehaviour
     {
         if(sceneExitInProgress)
         {
-            // print(timeOfFall + sceneDelayTime + " < " +Time.time);
             if(timeOfFall + sceneDelayTime < Time.time )
             {
                 sceneExitInProgress = false;
@@ -51,51 +59,72 @@ public class MainManager : MonoBehaviour
 
     public void playerHasFallen(GameObject losingPlayer)
     {
+        if (losingPlayer.tag == "Blue")
+        {
+            
+            orangePoints+=1;
+        } else if (losingPlayer.tag == "Orange")
+        {
+            bluePoints+=1;
+        }
+        print("The score is B:"+bluePoints+" O:"+orangePoints);
         loadNextScene();
     }
 
     public void loadNextScene()
     {
 
-        if(nextSceneName != "")
+        if (levelsChosen.Count <= 0)
         {
-            print("NSN:"+nextSceneName);
-            SceneManager.LoadScene(nextSceneName);
-            nextSceneName = "";
-
-        } else
+            loadSceneOnDelay("MainMenu");
+        } 
+        else 
         {
             string activeSceneName = SceneManager.GetActiveScene().name;
 
-            switch(activeSceneName)
+            if(activeSceneName != "MainMenu")
             {
-                case "TestSceneA":
-                    loadSceneOnDelay("TestSceneB");
-                    break;
-
-                case "TestSceneB":
-                    loadSceneOnDelay("TestSceneC");
-                    break;
-
-                case "TestSceneC":
-                    loadSceneOnDelay("TestSceneD");
-                    break;
-
-                case "TestSceneD":
-                    loadSceneOnDelay("MainMenu");
-                    break;
+                numberOfLevelsPlayed +=1;
+            }
+            if (numberOfLevels > numberOfLevelsPlayed)
+            {
+                string levelholder = "Scene "+ levelsChosen[numberOfLevelsPlayed];
                 
-                default:
-                    loadSceneOnDelay("MainMenu");
-                    break;
+                loadSceneOnDelay(levelholder);
+            }else
+            {
+                endGame();
             }
         }
     }
 
+    public void endGame()
+    {
+        string winner = "nobody";
+        if(bluePoints>orangePoints)
+        {
+            winner = "blue";
+        }
+        if(bluePoints<orangePoints)
+        {
+            winner = "orange";
+        } 
+
+        print("Score is "+bluePoints+" to "+orangePoints+". "+winner+" wins!");
+        
+        loadSceneOnDelay("MainMenu");
+
+        
+    }
+
+    public void startNewGame(int numberOfPlayers)
+    {
+        initialiseNewGame(numberOfPlayers);
+        loadNextScene();
+    } 
+
     public void loadSceneOnDelay(string SceneName)
     {
-        print("Load "+ SceneName);
-
         if(GameObject.Find("ExitFooter").TryGetComponent<headerFooterScrollScript>(out headerFooterScrollScript HFSS))
         {
             HFSS.isMoving = true;
@@ -104,5 +133,22 @@ public class MainManager : MonoBehaviour
         timeOfFall = Time.time;
         sceneExitInProgress = true;
     }
+
+    void initialiseNewGame(int numberOfPlayers)
+    {
+        levelsChosen = new List<int>();
+
+        for(int i = 0 ; i < numberOfLevels; i++)
+        {
+            int holder = Random.Range(0,9);
+            levelsChosen.Add(holder);
+        }
+
+        numberOfLevelsPlayed = 0;
+        bluePoints = 0;
+        orangePoints = 0;
+        print("The score is reset to B:"+bluePoints+" O:"+orangePoints);
+    }
+
 }
 

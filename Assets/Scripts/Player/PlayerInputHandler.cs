@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
 
-    [SerializeField] private int playerIndex = 0;
+    // [SerializeField] private int playerIndex = 0;
+
+
     // private PlayerInput playerInput;
     // private PlayerInputActions playerInputActions;
     [SerializeField] private string keyUp = "w";
@@ -24,12 +26,32 @@ public class PlayerInputHandler : MonoBehaviour
     private float inputMove = 0f;
     private float inputCursorHor = 0f;
     private float inputCursorVer = 0f;
+
+    public PlayerMovement PMComponent;
+    public PlayerCollisions PCComponent;
     Vector2 inputCursor = Vector2.zero;
 
     GameObject playerCursorObject;
 
 
     void Start() {
+
+        // if()
+        // playerCursorObject = .Find("Cursor");
+
+        // print(gameObject.tag);
+        string characterColor = gameObject.tag;
+        // The following two if statements are new additions.
+        if(!TryGetComponent<PlayerMovement>(out PMComponent))
+        {
+            Debug.Log("PlayerCursor component not found.");
+        } 
+
+        if(!TryGetComponent<PlayerCollisions>(out PCComponent))
+        {
+            Debug.Log("PlayerCollisions component not found.");
+        } 
+        
         playerCursorObject = gameObject.transform.parent.GetChild(0).gameObject;
     }
 
@@ -75,7 +97,7 @@ public class PlayerInputHandler : MonoBehaviour
         inputCursor = new Vector2(inputCursorHor, inputCursorVer);
         inputCursor.Normalize();
         // inputCursor = playerInputActions.Player.Cursor.ReadValue<Vector2>();
-        playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
+        // playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
         
         if (Input.GetKey(keyGrow)) {
         //if (playerInputActions.Player.Grow.IsPressed()) {

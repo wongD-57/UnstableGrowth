@@ -9,6 +9,8 @@ TagManager:
   - Platform
   - Blue
   - Orange
+  - TNT
+  - RigidBox
   layers:
   - Default
   - TransparentFX

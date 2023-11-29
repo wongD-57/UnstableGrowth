@@ -17,8 +17,8 @@ public class MainMenuScript : MonoBehaviour
     public void StartGameButton()
     {
 
-        print("SGB Pressed");
-        print(OptionsMenu.activeSelf);
+        // print("SGB Pressed");
+        // print(OptionsMenu.activeSelf);
         if(!PlayMenu.activeSelf){
             PlayMenu.SetActive(true);
         } else
@@ -29,7 +29,7 @@ public class MainMenuScript : MonoBehaviour
 
     public void OptionsButton()
     {
-        print("OB Pressed");
+        // print("OB Pressed");
         if(!OptionsMenu.activeSelf){
             OptionsMenu.SetActive(true);
         } else

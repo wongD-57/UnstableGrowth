@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5023636151047227513}
   m_Layer: 7
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ GameObject:
   - component: {fileID: 7442981798312899375}
   m_Layer: 7
   m_Name: Arm
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59cf02a86e1d614295cc56835bcc6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CursorObject: {fileID: 0}
+  CursorObject: {fileID: 7879808487832626577}
   flipper: 1
 --- !u!1 &4770977647993432066
 GameObject:
@@ -174,7 +174,7 @@ GameObject:
   - component: {fileID: 8564426214302485025}
   m_Layer: 7
   m_Name: Legs
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 1691710580952715991}
   m_Layer: 0
   m_Name: PlayerAndCursor_Orange
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 2644092708576101350}
   m_Layer: 7
   m_Name: Body
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 8177538731960233567}
   m_Layer: 0
   m_Name: Cursor
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 600751475695865248}
   m_Layer: 7
   m_Name: Sprites Parent
-  m_TagString: Untagged
+  m_TagString: Orange
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -660,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 8555506063099027931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0.12, z: -1}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -701,9 +701,17 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 2.27
       objectReference: {fileID: 0}
+    - target: {fileID: 1841233622519307714, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
+      propertyPath: m_TagString
+      value: Orange
+      objectReference: {fileID: 0}
     - target: {fileID: 1890894236205495087, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1890894236205495087, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
+      propertyPath: m_TagString
+      value: Orange
       objectReference: {fileID: 0}
     - target: {fileID: 4988476176215623113, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_LocalScale.x
