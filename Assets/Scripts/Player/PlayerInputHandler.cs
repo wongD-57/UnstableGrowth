@@ -7,83 +7,101 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
 
-    float inputMove = 0f;
+    [SerializeField] private int playerIndex = 0;
+    // private PlayerInput playerInput;
+    // private PlayerInputActions playerInputActions;
+    [SerializeField] private string keyUp = "w";
+    [SerializeField] private string keyDown = "s";
+    [SerializeField] private string keyLeft = "a";
+    [SerializeField] private string keyRight = "d";
+    [SerializeField] private string keyCursorUp = "t";
+    [SerializeField] private string keyCursorDown = "g";
+    [SerializeField] private string keyCursorLeft = "f";
+    [SerializeField] private string keyCursorRight = "h";
+    [SerializeField] private string keyGrow = "r";
+    [SerializeField] private string keyShrink = "y";
 
-    private string characterColor;
+    private float inputMove = 0f;
+    private float inputCursorHor = 0f;
+    private float inputCursorVer = 0f;
     Vector2 inputCursor = Vector2.zero;
-    private PlayerInput playerInput;
-    private PlayerInputActions playerInputActions;
 
     GameObject playerCursorObject;
-    public PlayerMovement PMComponent;
-    public PlayerCollisions PCComponent;
+
 
     void Start() {
-
-        // if()
-        // playerCursorObject = .Find("Cursor");
-
-        // print(gameObject.tag);
-        characterColor = gameObject.tag;
-        // The following two if statements are new additions.
-        if(!TryGetComponent<PlayerMovement>(out PMComponent))
-        {
-            Debug.Log("PlayerCursor component not found.");
-        } 
-
-        if(!TryGetComponent<PlayerCollisions>(out PCComponent))
-        {
-            Debug.Log("PlayerCollisions component not found.");
-        } 
-        
+        playerCursorObject = gameObject.transform.parent.GetChild(0).gameObject;
     }
 
-    private void Awake() {
-        playerInput = GetComponent<PlayerInput>();
-        playerInputActions = new PlayerInputActions();
-        playerInputActions.Player.Enable();
-        playerInputActions.Player.Jump.performed += OnJump;    
-    }
+    // private void Awake() {
+    //     playerInput = GetComponent<PlayerInput>();
+
+    //     if (playerIndex == 0) {
+    //         playerInputActions = new PlayerInputActions();
+    //     }
+
+    //     playerInputActions.Player.Enable();
+    //     playerInputActions.Player.Jump.performed += OnJump;   
+    // }
 
     private void Update() {
-        inputMove = playerInputActions.Player.LeftRightMovement.ReadValue<float>();
 
-        if(characterColor == "Orange")
-        {
+        // Read the Input from the Player
 
-            orangeMovementManager();
-
-        }else if(characterColor == "Blue") {
-
-            //
-            // PMComponent.ReadInput(inputMove);
-        
+        inputMove = 0;
+        // inputMove = playerInputActions.Player.LeftRightMovement.ReadValue<float>();
+        if (Input.GetKey(keyLeft)) {
+            inputMove -= 1;
         }
+        if (Input.GetKey(keyRight)) {
+            inputMove += 1;
+        }
+        GetComponent<PlayerMovement>().ReadInput(inputMove);
 
-
-
-        inputCursor = playerInputActions.Player.Cursor.ReadValue<Vector2>();
+        inputCursorHor = 0;
+        inputCursorVer = 0;
+        if (Input.GetKey(keyCursorUp)) {
+            inputCursorVer += 1;
+        }
+        if (Input.GetKey(keyCursorDown)) {
+            inputCursorVer -= 1;
+        }
+        if (Input.GetKey(keyCursorLeft)) {
+            inputCursorHor -= 1; 
+        }
+        if (Input.GetKey(keyCursorRight)) {
+            inputCursorHor += 1;
+        }
+        inputCursor = new Vector2(inputCursorHor, inputCursorVer);
+        inputCursor.Normalize();
+        // inputCursor = playerInputActions.Player.Cursor.ReadValue<Vector2>();
+        playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
         
-        if (playerInputActions.Player.Grow.IsPressed()) {
+        if (Input.GetKey(keyGrow)) {
+        //if (playerInputActions.Player.Grow.IsPressed()) {
             OnGrow();
         }
 
-        if (playerInputActions.Player.Shrink.IsPressed()) {
+        if (Input.GetKey(keyShrink)) {
+        // if (playerInputActions.Player.Shrink.IsPressed()) {
             OnShrink();
         }
         
-        OnDrop(playerInputActions.Player.Drop.IsPressed());
+        if (Input.GetKey(keyDown)) {
+        // OnDrop(playerInputActions.Player.Drop.IsPressed());
+            OnDrop(true);
+        } else {
+            OnDrop(false);
+        }
+
+        if (Input.GetKeyDown(keyUp)) {
+            GetComponent<PlayerMovement>().Jump();
+        }
         
     }
 
-    public void OnJump(InputAction.CallbackContext context) {
-        // GetComponent<PlayerMovement>().Jump();
-        PMComponent.Jump();
-    }
-
     public void OnDrop(bool dropInput) {
-        // GetComponent<PlayerCollisions>().Drop(dropInput);
-        PCComponent.Drop(dropInput);
+        GetComponent<PlayerCollisions>().Drop(dropInput);
     }
     
     public void OnGrow() {
