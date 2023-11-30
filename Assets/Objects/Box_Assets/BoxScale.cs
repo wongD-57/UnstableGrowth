@@ -18,14 +18,14 @@ public class BoxScale : MonoBehaviour
 
     public float density = 0.7f;
 
-    public void MakeGrow() {
-        currentScale = Mathf.Clamp(currentScale + growthRate, minSize, maxSize);
+    public void MakeGrow(float multiplier) {
+        currentScale = Mathf.Clamp(currentScale + (growthRate * multiplier), minSize, maxSize);
         
         transform.localScale = UpdateScaleRate(currentScale);
     }
 
-    public void MakeShrink() {
-        currentScale = Mathf.Clamp(currentScale - shrinkRate, minSize, maxSize);
+    public void MakeShrink(float multiplier) {
+        currentScale = Mathf.Clamp(currentScale - (shrinkRate * multiplier), minSize, maxSize);
 
         transform.localScale = UpdateScaleRate(currentScale);
     }

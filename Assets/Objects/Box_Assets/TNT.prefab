@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3071279297866323547}
   - component: {fileID: 4217477706530456611}
   - component: {fileID: 4284311157799707728}
-  m_Layer: 12
+  m_Layer: 9
   m_Name: TNT
   m_TagString: Box
   m_Icon: {fileID: 0}
@@ -166,6 +166,7 @@ MonoBehaviour:
   shrinkRate: 0.05
   maxSize: 1.5
   minSize: 0.75
+  density: 0.7
 --- !u!114 &4217477706530456611
 MonoBehaviour:
   m_ObjectHideFlags: 0

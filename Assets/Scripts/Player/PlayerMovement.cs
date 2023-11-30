@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
 
     public Collider zAxisCollider;
 
+    LayerMask groundMask;
+    float groundCheckDistance;
+
     private float platformZDatum;
     // Start is called before the first frame update
     void Start() {
@@ -35,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         if (grounded) {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             grounded = false;
-            
         }
         
         // Else if not grounded, don't do anything.

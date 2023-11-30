@@ -30,12 +30,12 @@ public class PlayerPowerUpModifier : MonoBehaviour
 
     void Update() {
         if (movePower_State) {
-            if ((movePower_TimeStart - Time.time) > movePower_Duration) {
+            if ((Time.time - movePower_TimeStart) > movePower_Duration) {
                 MovePowerDown();
             }
         }
         if (jumpPower_State) {
-            if ((jumpPower_TimeStart - Time.time) > jumpPower_Duration) {
+            if ((Time.time - jumpPower_TimeStart) > jumpPower_Duration) {
                 JumpPowerDown();
             }
         }
@@ -78,6 +78,7 @@ public class PlayerPowerUpModifier : MonoBehaviour
             } else if (col.name.Contains("Move")) {
                 MovePowerUp();
             }
+            Destroy(col);
         }
     }
 }

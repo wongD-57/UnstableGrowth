@@ -19,6 +19,8 @@ public class PlayerCursor : MonoBehaviour
 
     public float cubeScaleSpeed = 0.1f;
 
+    public float objectPlanePosition = 0.75f;
+
 
 
     public void ReadInput(Vector2 inputCursor) {
@@ -26,31 +28,27 @@ public class PlayerCursor : MonoBehaviour
     }
 
     public void MakeGrow() {
-        RaycastHit hit;
-        cameraPosition = cameraObject.transform.position;
-        if (Physics.Raycast(cameraPosition, transform.position - cameraPosition, out hit, 30f)) {
-            Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* hit.distance, Color.green);
-            Debug.Log("Grow!");
-            if (hit.rigidbody.gameObject.GetComponent<BoxScale>() != null) {
-                hit.rigidbody.gameObject.GetComponent<BoxScale>().MakeGrow();
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, objectPlanePosition), transform.localScale.x);
+        
+        foreach (Collider nearbyObject in colliders) {
+            
+            if (nearbyObject.GetComponent<BoxScale>() != null) {
+                nearbyObject.GetComponent<BoxScale>().MakeGrow(1/colliders.Length);
             }
-        } else {
-            Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* 100, Color.red);
         }
+
     }
 
     public void MakeShrink() {
-        RaycastHit hit;
-        cameraPosition = cameraObject.transform.position;
-        if (Physics.Raycast(cameraPosition, transform.position - cameraPosition, out hit, 30f)) {
-            Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* hit.distance, Color.green);
-            Debug.Log("Shrink!");
-            if (hit.rigidbody.gameObject.GetComponent<BoxScale>() != null) {
-                hit.rigidbody.gameObject.GetComponent<BoxScale>().MakeShrink();
+        Collider[] colliders = Physics.OverlapSphere(new Vector3(transform.position.x, transform.position.y, objectPlanePosition), transform.localScale.x);
+        
+        foreach (Collider nearbyObject in colliders) {
+            
+            if (nearbyObject.GetComponent<BoxScale>() != null) {
+                nearbyObject.GetComponent<BoxScale>().MakeShrink(1/colliders.Length);
             }
-        } else {
-            Debug.DrawRay(cameraPosition, (transform.position - cameraPosition)* 100, Color.red);
         }
+
     }
 
     void Start() {

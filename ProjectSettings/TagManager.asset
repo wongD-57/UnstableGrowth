@@ -16,7 +16,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player_Cursor
   - Player_OverallHitbox
   - Player_GroundHitbox
   - Box_OverallHitbox
