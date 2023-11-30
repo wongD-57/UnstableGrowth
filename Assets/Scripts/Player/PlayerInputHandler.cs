@@ -134,22 +134,22 @@ public class PlayerInputHandler : MonoBehaviour
         playerCursorObject.GetComponent<PlayerCursor>().MakeShrink();
     }
 
-    public void orangeMovementManager()
-    {
-        if(Input.GetKey("a"))
-        {
-            print("A!");
-            PMComponent.ReadInput(-1);
-        } else if(Input.GetKey("d"))
-        {
-            PMComponent.ReadInput(1);
-        } else {
-            PMComponent.ReadInput(0);
-        }
+    // public void orangeMovementManager()
+    // {
+    //     if(Input.GetKey("a"))
+    //     {
+    //         print("A!");
+    //         PMComponent.ReadInput(-1);
+    //     } else if(Input.GetKey("d"))
+    //     {
+    //         PMComponent.ReadInput(1);
+    //     } else {
+    //         PMComponent.ReadInput(0);
+    //     }
 
-        if(Input.GetKeyDown("w"))
-        {
-            PMComponent.Jump();
-        }
-    }
+    //     if(Input.GetKeyDown("w"))
+    //     {
+    //         PMComponent.Jump();
+    //     }
+    // }
 }

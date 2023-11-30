@@ -9,12 +9,15 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody rb;
     [SerializeField] private bool grounded = false;
 
-    [SerializeField] private float moveSpeed = 1;
-    [SerializeField] private float jumpForce = 5;
+    public float moveSpeed = 1;
+    public float jumpForce = 5;
     
     public float playerDepth = 0.1f;
 
     public Collider zAxisCollider;
+
+    LayerMask groundMask;
+    float groundCheckDistance;
 
     private float platformZDatum;
     // Start is called before the first frame update
@@ -35,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
         if (grounded) {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode.Impulse);
             grounded = false;
-            
         }
         
         // Else if not grounded, don't do anything.

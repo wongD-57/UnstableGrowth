@@ -8,12 +8,14 @@ public class PlayerGroundCheck : MonoBehaviour
 {
     // Raycast below and check if it runs into any overall hitbox or the environment
 
-    LayerMask groundMask;
+    public LayerMask groundMask;
     RaycastHit hit;
 
     PlayerMovement PMHolder;
 
-    [SerializeField] private float groundCheckDistance = 1.05f;
+    Rigidbody objectRB;
+
+    public float groundCheckDistance = 1.05f;
 
     void Start() {
         PMHolder = transform.parent.transform.GetComponent<PlayerMovement>();
@@ -29,6 +31,13 @@ public class PlayerGroundCheck : MonoBehaviour
             PMHolder.Grounded(false);
         }
         Debug.DrawRay(transform.position, Vector3.down * groundCheckDistance, Color.green);
+    }
+
+    public void ApplyJumpForceBelow(float jumpForce) {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundMask)) {
+            objectRB = hit.collider.GetComponent<Rigidbody>();
+            objectRB.AddForce(Vector3.down * jumpForce, ForceMode.Impulse);
+        }
     }
 
     

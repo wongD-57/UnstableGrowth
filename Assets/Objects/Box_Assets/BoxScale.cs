@@ -16,24 +16,32 @@ public class BoxScale : MonoBehaviour
     private Vector3 startingScale;
     private Vector3 targetSize;
 
-    public void MakeGrow() {
-        currentScale = Mathf.Clamp(currentScale + growthRate, minSize, maxSize);
+    public float density = 0.7f;
 
+    public void MakeGrow(float multiplier) {
+        currentScale = Mathf.Clamp(currentScale + (growthRate * multiplier), minSize, maxSize);
+        
         transform.localScale = UpdateScaleRate(currentScale);
     }
 
-    public void MakeShrink() {
-        currentScale = Mathf.Clamp(currentScale - shrinkRate, minSize, maxSize);
+    public void MakeShrink(float multiplier) {
+        currentScale = Mathf.Clamp(currentScale - (shrinkRate * multiplier), minSize, maxSize);
 
         transform.localScale = UpdateScaleRate(currentScale);
     }
 
     void Start() {
         startingScale = transform.localScale;
+
+        UpdateMass(startingScale[0], startingScale[1]);
     }
 
     Vector3 UpdateScaleRate(float targetScale) {
         targetSize = targetScale * startingScale;
         return targetSize;
+    }
+
+    void UpdateMass(float xSize, float ySize) {
+        GetComponent<Rigidbody>().mass = density * xSize * ySize;
     }
 }
