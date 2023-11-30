@@ -26,6 +26,10 @@ public class PlayerGroundCheck : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundMask)) {
             // transform.parent.transform.GetComponent<PlayerMovement>().Grounded(true);
             PMHolder.Grounded(true);
+        } else if (Physics.Raycast(transform.position + new Vector3(transform.localScale.x, 0, 0), Vector3.down, out hit, groundCheckDistance, groundMask)) {
+            PMHolder.Grounded(true);
+        } else if (Physics.Raycast(transform.position + new Vector3(-transform.localScale.x, 0, 0), Vector3.down, out hit, groundCheckDistance, groundMask)) {
+            PMHolder.Grounded(true);
         } else {
             // transform.parent.transform.GetComponent<PlayerMovement>().Grounded(false);
             PMHolder.Grounded(false);
@@ -34,7 +38,7 @@ public class PlayerGroundCheck : MonoBehaviour
     }
 
     public void ApplyJumpForceBelow(float jumpForce) {
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundMask)) {
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, groundCheckDistance, groundMask) || Physics.Raycast(transform.position + new Vector3(transform.localScale.x, 0, 0), Vector3.down, out hit, groundCheckDistance, groundMask) || Physics.Raycast(transform.position + new Vector3(-transform.localScale.x, 0, 0), Vector3.down, out hit, groundCheckDistance, groundMask)) {
             objectRB = hit.collider.GetComponent<Rigidbody>();
             objectRB.AddForce(Vector3.down * jumpForce, ForceMode.Impulse);
         }

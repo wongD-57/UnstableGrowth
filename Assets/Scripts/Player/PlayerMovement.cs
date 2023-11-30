@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     
     public float playerDepth = 0.1f;
 
-    public Collider zAxisCollider;
+    //public Collider zAxisCollider;
 
     LayerMask groundMask;
     float groundCheckDistance;

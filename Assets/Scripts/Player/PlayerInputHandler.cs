@@ -20,8 +20,8 @@ public class PlayerInputHandler : MonoBehaviour
     [SerializeField] private string keyCursorDown = "g";
     [SerializeField] private string keyCursorLeft = "f";
     [SerializeField] private string keyCursorRight = "h";
-    [SerializeField] private string keyGrow = "r";
-    [SerializeField] private string keyShrink = "y";
+    // [SerializeField] private string keyGrow = "r";
+    // [SerializeField] private string keyShrink = "y";
 
     private float inputMove = 0f;
     private float inputCursorHor = 0f;
@@ -97,17 +97,17 @@ public class PlayerInputHandler : MonoBehaviour
         inputCursor = new Vector2(inputCursorHor, inputCursorVer);
         inputCursor.Normalize();
         // inputCursor = playerInputActions.Player.Cursor.ReadValue<Vector2>();
-        // playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
+        playerCursorObject.GetComponent<PlayerCursor>().ReadInput(inputCursor);
         
-        if (Input.GetKey(keyGrow)) {
-        //if (playerInputActions.Player.Grow.IsPressed()) {
-            OnGrow();
-        }
+        // if (Input.GetKey(keyGrow)) {
+        // //if (playerInputActions.Player.Grow.IsPressed()) {
+        //     OnGrow();
+        // }
 
-        if (Input.GetKey(keyShrink)) {
-        // if (playerInputActions.Player.Shrink.IsPressed()) {
-            OnShrink();
-        }
+        // if (Input.GetKey(keyShrink)) {
+        // // if (playerInputActions.Player.Shrink.IsPressed()) {
+        //     OnShrink();
+        // }
         
         if (Input.GetKey(keyDown)) {
         // OnDrop(playerInputActions.Player.Drop.IsPressed());

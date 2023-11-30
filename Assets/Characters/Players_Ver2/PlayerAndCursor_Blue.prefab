@@ -278,7 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59cf02a86e1d614295cc56835bcc6cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CursorObject: {fileID: 6904883208734900182}
   flipper: 1
 --- !u!1 &4709554818705538783
 GameObject:
@@ -651,8 +650,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b31e38ff634a7e4fa98f42116b6f08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSpeedProportional: 0.025
-  cubeScaleSpeed: 0.05
+  cursorSpeedProportional: 0.01
+  cubeScaleSpeed: 0.02
+  objectPlanePosition: 0.75
 --- !u!1 &8352486495587307137
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,13 +693,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 281430800034219272}
     m_Modifications:
+    - target: {fileID: 453025906398879857, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
+      propertyPath: groundMask.m_Bits
+      value: 7296
+      objectReference: {fileID: 0}
     - target: {fileID: 1442772897219086916, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1442772897219086916, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1841233622519307714, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_TagString
@@ -772,6 +776,10 @@ PrefabInstance:
     - target: {fileID: 7816055162200477193, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8978106612644326486, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
+      propertyPath: jumpForce
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8978106612644326486, guid: 453930d7e2f433e46a30c311dcacc32b, type: 3}
       propertyPath: zAxisCollider

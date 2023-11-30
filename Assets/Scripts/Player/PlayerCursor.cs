@@ -33,7 +33,7 @@ public class PlayerCursor : MonoBehaviour
         foreach (Collider nearbyObject in colliders) {
             
             if (nearbyObject.GetComponent<BoxScale>() != null) {
-                nearbyObject.GetComponent<BoxScale>().MakeGrow(1/colliders.Length);
+                nearbyObject.GetComponent<BoxScale>().MakeGrow(1/colliders.Length * cubeScaleSpeed);
             }
         }
 
@@ -45,7 +45,7 @@ public class PlayerCursor : MonoBehaviour
         foreach (Collider nearbyObject in colliders) {
             
             if (nearbyObject.GetComponent<BoxScale>() != null) {
-                nearbyObject.GetComponent<BoxScale>().MakeShrink(1/colliders.Length);
+                nearbyObject.GetComponent<BoxScale>().MakeShrink(1/colliders.Length * cubeScaleSpeed);
             }
         }
 
@@ -61,5 +61,7 @@ public class PlayerCursor : MonoBehaviour
     void Update() {
         //m_rTransform.anchoredPosition += new Vector2(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional);
         transform.position += new Vector3(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional, 0);
+
+        MakeGrow();
     }
 }
