@@ -79,12 +79,12 @@ public class MainManager : MonoBehaviour
 
         if (levelsChosen.Count <= 0)
         {
-            print("D1");
+            // print("D1");
             loadSceneOnDelay("MainMenu");
         } 
         else 
         {
-            print("D2");
+            // print("D2");
             string activeSceneName = SceneManager.GetActiveScene().name;
 
             if(activeSceneName != "MainMenu")
@@ -92,10 +92,15 @@ public class MainManager : MonoBehaviour
                 numberOfLevelsPlayed +=1;
             }
 
-            if (bluePoints+orangePoints >= pointsRequiredToWin)
+            if (bluePoints >= pointsRequiredToWin || orangePoints >= pointsRequiredToWin)
             {
 
                 endGame();
+            } else 
+            {
+                string LevelHolder = "Scene "+ Random.Range(0,9);
+                loadSceneOnDelay(LevelHolder);
+                print("Z");
             }
 
         }

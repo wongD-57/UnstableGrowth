@@ -15,9 +15,11 @@ public class ScoreUIScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject MMGO = GameObject.Find("MainManager");
+        GameObject MMGO = GameObject.Find("MainManagerObject");
 
-        if(TryGetComponent<MainManager>(out MMScript))
+        print("Score Script Started");
+
+        if(MMGO.TryGetComponent<MainManager>(out MMScript))
         {
             blueTextGO.text = MMScript.bluePoints.ToString();
             orangeTextGO.text = MMScript.orangePoints.ToString();
