@@ -98,7 +98,7 @@ public class MainManager : MonoBehaviour
                 endGame();
             } else 
             {
-                string LevelHolder = "Scene "+ Random.Range(0,9);
+                string LevelHolder = "Scene "+ Random.Range(0,5);
                 loadSceneOnDelay(LevelHolder);
                 print("Z");
             }

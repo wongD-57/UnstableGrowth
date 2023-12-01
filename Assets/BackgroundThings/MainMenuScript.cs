@@ -38,4 +38,8 @@ public class MainMenuScript : MonoBehaviour
         }
     }
 
+    public void QuitButton() {
+        Application.Quit();
+    }
+
 }

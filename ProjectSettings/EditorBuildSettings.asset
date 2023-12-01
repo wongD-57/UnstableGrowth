@@ -35,19 +35,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenesForImport/Scene 4.unity
     guid: e81ad3e8a4fa0cd4c857746450601038
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenesForImport/Scene 5.unity
     guid: 790e788481e7f4747b56932699d55e9d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenesForImport/Scene 6.unity
     guid: f8be8b21c9bb83e4c818af9813545af1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenesForImport/Scene 7.unity
     guid: 3adc12bc194698648a3640982410881a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenesForImport/Scene 8.unity
     guid: db03c72d604936745a1ceb7e51d36a5f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ScenesForImport/Scene 9.unity
     guid: b9c49c3215c4ff640b09710271436ab7
   - enabled: 1

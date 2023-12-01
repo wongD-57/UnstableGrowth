@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoxScale : MonoBehaviour
@@ -18,6 +19,12 @@ public class BoxScale : MonoBehaviour
 
     public float density = 0.7f;
 
+    private bool reachedMaxSize = false;
+
+    private float timeSinceLastParticle;
+
+    [SerializeField] private GameObject maxSizeParticlePrefab;
+
     public void MakeGrow(float multiplier) {
         currentScale = Mathf.Clamp(currentScale + (growthRate * multiplier), minSize, maxSize);
         
@@ -34,6 +41,8 @@ public class BoxScale : MonoBehaviour
         startingScale = transform.localScale;
 
         UpdateMass(startingScale[0], startingScale[1]);
+
+        timeSinceLastParticle = Time.time;
     }
 
     Vector3 UpdateScaleRate(float targetScale) {
@@ -43,5 +52,16 @@ public class BoxScale : MonoBehaviour
 
     void UpdateMass(float xSize, float ySize) {
         GetComponent<Rigidbody>().mass = density * xSize * ySize;
+    }
+
+    void Update() {
+        if ((currentScale == maxSize) && ((Time.time - timeSinceLastParticle) > 0.5f) && !reachedMaxSize) {
+            reachedMaxSize = true;
+            timeSinceLastParticle = Time.time;
+            Instantiate(maxSizeParticlePrefab, transform.position + new Vector3(0, 0, -2), transform.rotation);
+        }
+        if (currentScale < maxSize) {
+            reachedMaxSize = false;
+        }
     }
 }
