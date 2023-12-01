@@ -10,6 +10,8 @@ public class MainManager : MonoBehaviour
 
     public int numberOfPlayers;
 
+    public int pointsRequiredToWin = 5;
+
     int numberOfLevelsPlayed = 0;
 
     public int bluePoints;
@@ -73,28 +75,29 @@ public class MainManager : MonoBehaviour
 
     public void loadNextScene()
     {
+        print("D");
 
         if (levelsChosen.Count <= 0)
         {
+            print("D1");
             loadSceneOnDelay("MainMenu");
         } 
         else 
         {
+            print("D2");
             string activeSceneName = SceneManager.GetActiveScene().name;
 
             if(activeSceneName != "MainMenu")
             {
                 numberOfLevelsPlayed +=1;
             }
-            if (numberOfLevels > numberOfLevelsPlayed)
+
+            if (bluePoints+orangePoints >= pointsRequiredToWin)
             {
-                string levelholder = "Scene "+ levelsChosen[numberOfLevelsPlayed];
-                
-                loadSceneOnDelay(levelholder);
-            }else
-            {
+
                 endGame();
             }
+
         }
     }
 
@@ -104,21 +107,25 @@ public class MainManager : MonoBehaviour
         if(bluePoints>orangePoints)
         {
             winner = "blue";
+            loadSceneOnDelay("EndingScene_Blue");
         }
+
         if(bluePoints<orangePoints)
         {
             winner = "orange";
+            loadSceneOnDelay("EndingScene_Orange");
         } 
 
         print("Score is "+bluePoints+" to "+orangePoints+". "+winner+" wins!");
         
-        loadSceneOnDelay("MainMenu");
+        // loadSceneOnDelay("MainMenu");
 
         
     }
 
     public void startNewGame(int numberOfPlayers)
     {
+        print("B");
         initialiseNewGame(numberOfPlayers);
         loadNextScene();
     } 

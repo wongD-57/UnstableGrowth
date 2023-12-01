@@ -10,6 +10,7 @@ public class StartGameButtonsScript : MonoBehaviour
         GameObject GOHolder = GameObject.Find("MainManagerObject");
         MainManager MMScript = GOHolder.GetComponent<MainManager>();
         MMScript.startNewGame(2);
+        print("Part A");
     }
 
     public void OnePlayerStart()

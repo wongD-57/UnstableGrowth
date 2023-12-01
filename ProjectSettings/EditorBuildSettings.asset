@@ -50,4 +50,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ScenesForImport/Scene 9.unity
     guid: b9c49c3215c4ff640b09710271436ab7
+  - enabled: 1
+    path: Assets/Scenes/EndingScene_Blue.unity
+    guid: 1aabe7195a93ee34ca531976ebf61ca5
+  - enabled: 1
+    path: Assets/Scenes/EndingScene_Orange.unity
+    guid: fa5b6ac40370fdc4e82ec4d6d3d17f1f
   m_configObjects: {}
