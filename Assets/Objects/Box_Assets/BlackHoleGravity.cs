@@ -20,7 +20,7 @@ public class BlackHoleGravity : MonoBehaviour
                 float distanceToObject = Vector3.Magnitude(rb.transform.position - transform.position); 
                 // Scale the magnitude of the force based on distance of the object
                 float forceMultiplier = Mathf.Clamp((influenceRadiusMax - distanceToObject)/(influenceRadiusMax - influenceRadiusMin), 0, 1);
-                rb.AddForce(Vector3.Normalize(transform.position - nearbyObject.transform.position) * forceMultiplier * gravityForce / Time.fixedDeltaTime);
+                rb.AddForce(Vector3.Normalize(transform.position - nearbyObject.transform.position) * forceMultiplier * gravityForce * transform.localScale.x / Time.fixedDeltaTime);
             }
         }
     }

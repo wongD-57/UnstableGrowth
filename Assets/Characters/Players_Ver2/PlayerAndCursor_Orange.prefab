@@ -524,7 +524,7 @@ GameObject:
   - component: {fileID: 7658113606341665364}
   - component: {fileID: 4926180193200475291}
   - component: {fileID: 8177538731960233567}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cursor
   m_TagString: Orange
   m_Icon: {fileID: 0}
@@ -540,7 +540,7 @@ Transform:
   m_GameObject: {fileID: 7879808487832626577}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.080000006, z: 0.40000018}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -631,9 +631,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b31e38ff634a7e4fa98f42116b6f08d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorSpeedProportional: 0.01
-  cubeScaleSpeed: 0.02
-  objectPlanePosition: 0.75
+  cursorSpeedProportional: 5
+  cubeScaleSpeed: 5
+  objectPlanePosition: 0.5
 --- !u!1 &8555506063099027931
 GameObject:
   m_ObjectHideFlags: 0
@@ -660,7 +660,7 @@ Transform:
   m_GameObject: {fileID: 8555506063099027931}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.12, z: -1}
+  m_LocalPosition: {x: 0, y: 0.12, z: -2}
   m_LocalScale: {x: 0.39999998, y: 0.39999998, z: 0.39999998}
   m_ConstrainProportionsScale: 1
   m_Children:

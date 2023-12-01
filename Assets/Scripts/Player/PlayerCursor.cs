@@ -33,8 +33,12 @@ public class PlayerCursor : MonoBehaviour
         foreach (Collider nearbyObject in colliders) {
             
             if (nearbyObject.GetComponent<BoxScale>() != null) {
-                nearbyObject.GetComponent<BoxScale>().MakeGrow(1/colliders.Length * cubeScaleSpeed);
+                nearbyObject.GetComponent<BoxScale>().MakeGrow(1/colliders.Length * cubeScaleSpeed * Time.deltaTime);
             }
+        }
+
+        if (colliders.Length == 0) {
+            print("No objects found");
         }
 
     }
@@ -60,7 +64,7 @@ public class PlayerCursor : MonoBehaviour
 
     void Update() {
         //m_rTransform.anchoredPosition += new Vector2(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional);
-        transform.position += new Vector3(input.x * cursorSpeedProportional, input.y * cursorSpeedProportional, 0);
+        transform.position += new Vector3(input.x * cursorSpeedProportional * Time.deltaTime, input.y * cursorSpeedProportional* Time.deltaTime, 0);
 
         MakeGrow();
     }
