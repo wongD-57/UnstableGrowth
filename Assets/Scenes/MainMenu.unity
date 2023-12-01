@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeaderAndFooter_Default
       objectReference: {fileID: 0}
+    - target: {fileID: 3998209666283116746, guid: e89239226674dbe4790adf9d8da7307c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -665,22 +669,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 08462e4b696e25745994a804d60b71e7, type: 2}
   - {fileID: 2100000, guid: b4bbb1890b5150d41be6ffbba79b553f, type: 2}
   - {fileID: 2100000, guid: bd2d782b87ec59545b686e3b25b3a640, type: 2}
---- !u!1 &1745728323 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6920201231637352939, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-  m_PrefabInstance: {fileID: 5815057191052719880}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1745728325 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7959884929312097034, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-  m_PrefabInstance: {fileID: 5815057191052719880}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1745728323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26afc8c5519d9264eab4713304cb3e16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1959714392
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,66 +773,6 @@ PrefabInstance:
     - target: {fileID: 3558839990876763896, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
       propertyPath: m_Name
       value: CameraHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025135615355565177, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025135615355565177, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7025135615355565177, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1745728323}
-    - target: {fileID: 7025135615355565177, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1745728325}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnePlayerStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StartGameButtonsScript, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 7336707003914566589, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363899864825925344, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363899864825925344, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1745728325}
-    - target: {fileID: 7363899864825925344, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: TwoPlayerStart
-      objectReference: {fileID: 0}
-    - target: {fileID: 7363899864825925344, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: StartGameButtonsScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8434701429593445020, guid: 08b92928d5d4e2042827251eca7b4630, type: 3}
       propertyPath: m_LocalPosition.x
